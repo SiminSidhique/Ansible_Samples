@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars_files:
+   - vars.yml 
+  tasks:
+   - name: Create a folder myfolder 
+     file:
+      path: "{{ my_path }}"
+      state: directory
+      mode: '0755'
+   - name: delete the folder myfolder using tags
+     file:
+      path: "{{ my_path }}"
+      state: absent
+     tags: 
+      - remove_folder # ansible-playbook challenge2.yml --tags remove_folder
+      - never        

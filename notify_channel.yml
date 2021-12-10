@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Notify our class channel
+    slack:
+      token: T02EY9VFEHH/B02PZSM4ASH/fdTfe8ZResKnhA2v9sMiGcS0
+      msg: 'Hi Everyone'
+      channel: '#week9'
+      

@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: no
+  connection: local
+  vars:
+    user_names:
+      - 'testuser1'
+      - 'testuser2'
+      - 'testuser3'
+​
+    group_names:
+      - 'testgroup1'
+      - 'testgroup2'
+      - 'testgroup3'
+​
+  tasks:
+​
+   - name: Remove test users from host
+     user:
+       name: '{{item}}'
+       state: absent
+       remove: yes
+     loop: "{{user_names}}"
+​
+   - name: Remove test groups from host
+     group:
+       name: '{{item}}'
+       state: absent
+     loop: "{{group_names}}"

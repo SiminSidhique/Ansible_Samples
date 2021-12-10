@@ -1,0 +1,33 @@
+---
+ - name: Ansible Tags
+   hosts: localhost
+   gather_facts: false
+   tasks:
+    - name: create multiple files
+      file:
+       path:  "name_{{ item }}"
+       state: touch
+      loop:
+       - 1
+       - 2
+       - 3
+      tags: first
+    
+    - debug:
+        msg: "This is second task"
+      tags: second
+    - debug:
+        msg: "This is third task"
+      tags: third
+    - name: "delete the files"
+      file: 
+       path: "name_{{ item }}"
+       state: absent
+      loop:
+       - 1
+       - 2
+       - 3 
+      tags: 
+      - fourth
+      - never
+#

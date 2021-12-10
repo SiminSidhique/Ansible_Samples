@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+   - name: Put path in file
+     lineinfile:
+       dest: file.txt
+       create: yes
+       line: "Path is {{ lookup('env', 'PATH') }}"
+       state: present 

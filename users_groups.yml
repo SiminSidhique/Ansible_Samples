@@ -1,0 +1,48 @@
+---
+- hosts: localhost
+  become: yes
+  become_user: root
+  become_method: sudo
+    
+  tasks:
+    - name: Add group "Management"
+      group:
+        name: management
+        state: present
+
+    - name: Add group "Sales"
+      group:
+        name: sales
+        state: present
+
+    - name: Add group "Operations"
+      group:
+        name: operations 
+        state: present 
+
+    - name: Add user Jen to all Groups
+      ansible.builtin.user: 
+        name: jen  
+        shell: /bin/bash
+        groups: management,operations,sales 
+        append: yes
+
+    - name: Add user Williams to all Groups
+      ansible.builtin.user: 
+        name: williams  
+        shell: /bin/bash
+        groups: management,operations,sales 
+        append: yes
+
+    - name: Add Matt, sam, Anne, Danny to Sales group
+      user:
+        name: "{{ item }}"
+        groups: sales 
+        append: yes
+      with_items:
+        - matt
+        - sam
+        - anne 
+        - danny 
+
+        

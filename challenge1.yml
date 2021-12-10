@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  tasks:
+  - name: write msg
+    debug: msg="First Challenge"   
+  - name: Make a directory
+    ansible.builtin.command: mkdir new2
+  - name: create 2 files
+    ansible.builtin.command: touch sample.txt
+  - name: show content of Ansible folder
+    ansible.builtin.command: ls -l  
+    register: command_output
+  - debug:
+     var: command_output.stdout_lines  
+  - name: create a text files
+    shell: echo "simin" >> /Users/simin/Desktop/Ansible/sample.txt   
+
+   
+
+
+
+     

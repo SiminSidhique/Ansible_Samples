@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Create a folder 
+    ansible.builtin.command: mkdir practice
+
+  - name: Move practice to Desktop
+    ansible.builtin.command: mv practice /Users/simin/Desktop  
+  
+  - name: remove the folder from Desktop using tags
+    ansible.builtin.command: rm -r /Users/simin/Desktop/practice
+    tags:
+    - remove_folder
+    - never
+  

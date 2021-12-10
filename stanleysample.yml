@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Create admin user  
+    user:
+      name: admin
+      password: LQqpIWvpxDXDw
+      state: present
+      system: no
+      create_home: yes
+      group: sudo
+
+  - name: Create developer1
+    user:
+      name: developer1
+      password: .uPXkYFwefL/M
+      state: present
+      system: no
+      create_home: no
+
+  - name: Create user
+    user:
+      name: user
+      password: UHuKQ6dXzm0Yo
+      state: present
+      system: no
+      create_home: no

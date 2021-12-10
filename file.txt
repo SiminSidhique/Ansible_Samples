@@ -1,0 +1,1 @@
+Path is /Users/simin/opt/anaconda3/bin:/Users/simin/opt/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin

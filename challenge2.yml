@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Create a folder NEW 
+    file:
+      path: /Users/simin/Desktop/NEW
+      state: directory
+      mode: '0755'
+
+  - name: Touch 3 text files in NEW
+    file: 
+      path:  "/Users/simin/Desktop/NEW/name_{{ item }}"
+      state: touch 
+    loop:
+       - 1
+       - 2
+       - 3
+  - name: delete the folder NEW using tags
+    file:
+      path: /Users/simin/Desktop/NEW
+      state: absent
+    tags: 
+    - remove_folder # ansible-playbook challenge2.yml --tags remove_folder
+    - never        
+
+
+
+
+
+  
